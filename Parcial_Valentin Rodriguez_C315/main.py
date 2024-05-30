@@ -196,7 +196,6 @@ def main():
                     retorno = pq.Paquete.productos_listar('DB_PRODUCTOS.csv')
                     for productos in retorno:
                         print(f'{productos}\n')
-                    #print(f'Productos:\n{retorno}')
                 case '5':
                     os.system('cls')
                     print('╔══════════════════════════════════════════════════╗\n\t Importar Producto\n╚═════════════════════════════════════════════════════╝\n')

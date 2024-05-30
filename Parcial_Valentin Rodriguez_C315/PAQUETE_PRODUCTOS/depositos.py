@@ -108,13 +108,7 @@ class Gestion:
                         break
             if cantidad_restante == 0:
                 break
-        
-        #filtered_depositos = []
-        #for d in depositos:
-        #    if len(d['stock']) > 0:
-        #        filtered_depositos.append(d)
-        #depositos = filtered_depositos
-        #depositos = [d for d in depositos if len(d['stock']) > 0]
+
         depositos = list(filter(lambda depo: len(depo['stock']) > 0, depositos))
         Gestion.guardar_depositos(depositos, depositos_path, 'd')
 
