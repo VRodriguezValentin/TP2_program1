@@ -8,7 +8,7 @@ def leer_txt(path, modo = 'r'):
 
 def escribir_txt(path, data, modo = 'w'):
     with open(path, modo) as archivo:
-        escribir = archivo.write(data)
+        escribir = archivo.write(data + '\n')
     return escribir
 
 def leer_json(path, modo = 'r'):
@@ -24,13 +24,19 @@ def escribir_json(path, data, modo = 'w'):
 def leer_csv(path, modo = 'r'):
     lista = []
     with open(path, modo) as archivo:
-        csv.DictReader(archivo, delimiter=',')
-        for elemento in archivo:
-            lista.append(elemento)
+        leer = csv.reader(archivo, delimiter=',')
+        for fila in leer:
+            lista.append(fila)
     return lista
 
 def escribir_csv(path, data, modo = 'w'):
     with open(path, modo, newline='') as archivo:
         escribir = csv.writer(archivo)
         escribir.writerow(data)
+    return escribir
+
+def escribir_csv_mas(path, data, modo = 'w'):
+    with open(path, modo, newline='') as archivo:
+        escribir = csv.writer(archivo)
+        escribir.writerows(data)
     return escribir

@@ -9,32 +9,46 @@ class Paquete:
         self.peso = peso
 
 
-    def producto_alta(path: str, inv1: list, inv2: list = [0]) -> bool:
-        arch.escribir_csv(path, inv1)
+    def productos_listar(path: str) -> list:
+        lista_productos = []
+        leer = arch.leer_csv(path)
+        for linea in leer:
+            lista_productos.append(linea)
+        return lista_productos
+
+    def productos_listar_cantidad(path: str) -> list:
+        lista_productos = []
+        leer = arch.leer_csv(path)
+        for linea in leer:
+            pos_cantidad = linea[0],linea[5]
+            lista_productos.append(pos_cantidad)
+        return lista_productos
+
+    def producto_alta(path: str, producto: list, cantidad: list = 0) -> bool:
+        arch.escribir_csv(path,producto,'a')
         return True
 
-    def producto_baja(path: str):#, inv1: list, inv2: list = [0]) -> bool:
-        return arch.leer_csv(path)
+    def producto_baja(path: str, lista: list) -> bool:
+        arch.escribir_csv_mas(path, lista)
+        return True
+
     
     def producto_modificar_compra(path: str, codigo: str, lista: list, usd_compra: int = None):
         if usd_compra != None:
-                    for producto in lista:
-                        if codigo in producto:
-                            producto[1] = usd_compra
-                            return 'Producto modificado con exito!'
-        return 'No se realizaron modificaciones'
+            for producto in lista:
+                if codigo in producto:
+                    producto[2] = usd_compra
+            arch.escribir_csv_mas(path,lista)
+            return 'Producto modificado con exito!'
+        else:
+            return 'No se realizaron modificaciones'
 
     def producto_modificar_venta(path: str, codigo: str, lista: list, usd_venta: int = None):
         if usd_venta != None:
-                    for producto in lista:
-                        if codigo in producto:
-                            producto[2] = usd_venta
-                            return 'Producto modificado con exito!'
-        return 'No se realizaron modificaciones'
-
-    def producto_listar(path: str, inv1: list, inv2: list = [0]):
-        lista_productos = []
-        for producto in  inv1:
-            lista_productos.append(producto)
-        return lista_productos
-
+            for producto in lista:
+                if codigo in producto:
+                    producto[3] = usd_venta
+            arch.escribir_csv_mas(path,lista)
+            return 'Producto modificado con exito!'
+        else:
+            return 'No se realizaron modificaciones'

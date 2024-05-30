@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "capacidad": 1000,
+        "stock": [
+            {
+                "item": "5678-hj",
+                "cantidad": 420
+            },
+            {
+                "item": "9999-xx",
+                "cantidad": 550
+            },
+            {
+                "item": "3456-jh",
+                "cantidad": 30
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "capacidad": 1000,
+        "stock": [
+            {
+                "item": "9999-xx",
+                "cantidad": 350
+            },
+            {
+                "item": "5678-hj",
+                "cantidad": 240
+            },
+            {
+                "item": "3456-jh",
+                "cantidad": 4
+            }
+        ]
+    }
+]
